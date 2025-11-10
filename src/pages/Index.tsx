@@ -25,6 +25,134 @@ export default function Index() {
     { from: 'Казань', to: 'Москва', date: '22 октября', train: '054Ч', car: '03', seat: '24', past: true }
   ];
 
+  const mcdLines = [
+    {
+      name: 'МЦД-1',
+      fullName: 'Белорусско-Савёловский',
+      color: '#F58220',
+      from: 'Одинцово',
+      to: 'Лобня',
+      schedule: [
+        { time: '06:15', to: 'Лобня', platform: '1' },
+        { time: '06:42', to: 'Лобня', platform: '1' },
+        { time: '07:18', to: 'Лобня', platform: '1' },
+        { time: '07:45', to: 'Лобня', platform: '2' },
+        { time: '08:12', to: 'Лобня', platform: '1' }
+      ]
+    },
+    {
+      name: 'МЦД-2',
+      fullName: 'Курско-Рижский',
+      color: '#D6083B',
+      from: 'Подольск',
+      to: 'Нахабино',
+      schedule: [
+        { time: '06:20', to: 'Нахабино', platform: '3' },
+        { time: '06:50', to: 'Нахабино', platform: '2' },
+        { time: '07:25', to: 'Нахабино', platform: '3' },
+        { time: '07:58', to: 'Нахабино', platform: '2' },
+        { time: '08:30', to: 'Нахабино', platform: '3' }
+      ]
+    },
+    {
+      name: 'МЦД-3',
+      fullName: 'Ленинградско-Казанский',
+      color: '#F8C52B',
+      from: 'Зеленоград',
+      to: 'Раменское',
+      schedule: [
+        { time: '06:10', to: 'Раменское', platform: '4' },
+        { time: '06:38', to: 'Раменское', platform: '4' },
+        { time: '07:05', to: 'Раменское', platform: '5' },
+        { time: '07:40', to: 'Раменское', platform: '4' },
+        { time: '08:15', to: 'Раменское', platform: '5' }
+      ]
+    },
+    {
+      name: 'МЦД-4',
+      fullName: 'Киевско-Горьковский',
+      color: '#36C5F0',
+      from: 'Апрелевка',
+      to: 'Железнодорожный',
+      schedule: [
+        { time: '06:05', to: 'Железнодорожный', platform: '2' },
+        { time: '06:35', to: 'Железнодорожный', platform: '3' },
+        { time: '07:10', to: 'Железнодорожный', platform: '2' },
+        { time: '07:48', to: 'Железнодорожный', platform: '3' },
+        { time: '08:20', to: 'Железнодорожный', platform: '2' }
+      ]
+    }
+  ];
+
+  const suburbanDirections = [
+    {
+      name: 'Павелецкое',
+      station: 'Павелецкий вокзал',
+      destinations: ['Домодедово', 'Ступино', 'Узуново'],
+      schedule: [
+        { time: '06:25', to: 'Домодедово', platform: '2' },
+        { time: '06:58', to: 'Ступино', platform: '1' },
+        { time: '07:30', to: 'Домодедово', platform: '3' },
+        { time: '08:05', to: 'Узуново', platform: '2' }
+      ]
+    },
+    {
+      name: 'Ярославское',
+      station: 'Ярославский вокзал',
+      destinations: ['Мытищи', 'Пушкино', 'Сергиев Посад'],
+      schedule: [
+        { time: '06:15', to: 'Пушкино', platform: '1' },
+        { time: '06:45', to: 'Мытищи', platform: '2' },
+        { time: '07:20', to: 'Сергиев Посад', platform: '1' },
+        { time: '07:55', to: 'Пушкино', platform: '3' }
+      ]
+    },
+    {
+      name: 'Киевское',
+      station: 'Киевский вокзал',
+      destinations: ['Апрелевка', 'Наро-Фоминск', 'Калуга'],
+      schedule: [
+        { time: '06:30', to: 'Апрелевка', platform: '4' },
+        { time: '07:00', to: 'Наро-Фоминск', platform: '5' },
+        { time: '07:35', to: 'Апрелевка', platform: '4' },
+        { time: '08:10', to: 'Калуга', platform: '6' }
+      ]
+    },
+    {
+      name: 'Казанское',
+      station: 'Казанский вокзал',
+      destinations: ['Люберцы', 'Раменское', 'Рязань'],
+      schedule: [
+        { time: '06:20', to: 'Люберцы', platform: '2' },
+        { time: '06:50', to: 'Раменское', platform: '3' },
+        { time: '07:25', to: 'Люберцы', platform: '2' },
+        { time: '08:00', to: 'Рязань', platform: '4' }
+      ]
+    },
+    {
+      name: 'Ленинградское',
+      station: 'Ленинградский вокзал',
+      destinations: ['Химки', 'Зеленоград', 'Тверь'],
+      schedule: [
+        { time: '06:10', to: 'Химки', platform: '1' },
+        { time: '06:40', to: 'Зеленоград', platform: '2' },
+        { time: '07:15', to: 'Химки', platform: '1' },
+        { time: '07:50', to: 'Тверь', platform: '3' }
+      ]
+    },
+    {
+      name: 'Курское',
+      station: 'Курский вокзал',
+      destinations: ['Подольск', 'Чехов', 'Тула'],
+      schedule: [
+        { time: '06:35', to: 'Подольск', platform: '5' },
+        { time: '07:05', to: 'Чехов', platform: '6' },
+        { time: '07:40', to: 'Подольск', platform: '5' },
+        { time: '08:15', to: 'Тула', platform: '7' }
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
@@ -59,6 +187,14 @@ export default function Index() {
               }`}
             >
               Маршруты
+            </button>
+            <button
+              onClick={() => setActiveTab('schedule')}
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                activeTab === 'schedule' ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              Расписание
             </button>
             <button
               onClick={() => setActiveTab('profile')}
@@ -419,6 +555,127 @@ export default function Index() {
           </div>
         )}
 
+        {activeTab === 'schedule' && (
+          <div className="mx-auto max-w-4xl space-y-8 animate-fade-in">
+            <div className="text-center space-y-2">
+              <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Расписание</h1>
+              <p className="text-sm md:text-base text-muted-foreground">МЦД и пригородные электрички</p>
+            </div>
+
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  <Icon name="TramFront" size={24} className="text-primary" />
+                  Московские центральные диаметры
+                </h2>
+                <div className="space-y-4">
+                  {mcdLines.map((line, index) => (
+                    <Card 
+                      key={index}
+                      className="overflow-hidden animate-slide-up"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div 
+                        className="h-2" 
+                        style={{ backgroundColor: line.color }}
+                      />
+                      <CardContent className="p-4 md:p-6">
+                        <div className="flex items-start justify-between mb-4">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <h3 className="text-lg font-bold">{line.name}</h3>
+                              <Badge variant="outline" className="text-xs">
+                                {line.fullName}
+                              </Badge>
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                              <span>{line.from}</span>
+                              <Icon name="ArrowRight" size={14} />
+                              <span>{line.to}</span>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          <p className="text-sm font-medium text-muted-foreground mb-3">Ближайшие отправления:</p>
+                          <div className="grid gap-2">
+                            {line.schedule.map((train, idx) => (
+                              <div 
+                                key={idx}
+                                className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg hover:bg-secondary/50 transition-colors"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <div className="text-lg font-bold text-primary">{train.time}</div>
+                                  <Icon name="ArrowRight" size={16} className="text-muted-foreground" />
+                                  <div className="text-sm">{train.to}</div>
+                                </div>
+                                <Badge variant="secondary" className="text-xs">
+                                  Платформа {train.platform}
+                                </Badge>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  <Icon name="TrainTrack" size={24} className="text-primary" />
+                  Пригородные направления
+                </h2>
+                <div className="space-y-4">
+                  {suburbanDirections.map((direction, index) => (
+                    <Card 
+                      key={index}
+                      className="animate-slide-up"
+                      style={{ animationDelay: `${(index + 4) * 0.1}s` }}
+                    >
+                      <CardContent className="p-4 md:p-6">
+                        <div className="mb-4">
+                          <h3 className="text-lg font-bold mb-1">{direction.name} направление</h3>
+                          <p className="text-sm text-muted-foreground mb-2">{direction.station}</p>
+                          <div className="flex flex-wrap gap-2">
+                            {direction.destinations.map((dest, idx) => (
+                              <Badge key={idx} variant="outline" className="text-xs">
+                                {dest}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          <p className="text-sm font-medium text-muted-foreground mb-3">Ближайшие отправления:</p>
+                          <div className="grid gap-2">
+                            {direction.schedule.map((train, idx) => (
+                              <div 
+                                key={idx}
+                                className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg hover:bg-secondary/50 transition-colors"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <div className="text-lg font-bold text-primary">{train.time}</div>
+                                  <Icon name="ArrowRight" size={16} className="text-muted-foreground" />
+                                  <div className="text-sm">{train.to}</div>
+                                </div>
+                                <Badge variant="secondary" className="text-xs">
+                                  Платформа {train.platform}
+                                </Badge>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {activeTab === 'profile' && (
           <div className="mx-auto max-w-2xl space-y-6 animate-fade-in">
             <div className="text-center space-y-2">
@@ -487,14 +744,14 @@ export default function Index() {
       </main>
 
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t">
-        <div className="grid grid-cols-4 h-16">
+        <div className="grid grid-cols-5 h-16">
           <button
             onClick={() => setActiveTab('ticket')}
             className={`flex flex-col items-center justify-center gap-1 transition-colors ${
               activeTab === 'ticket' ? 'text-primary' : 'text-muted-foreground'
             }`}
           >
-            <Icon name="Ticket" size={20} />
+            <Icon name="Ticket" size={18} />
             <span className="text-xs">Билет</span>
           </button>
           <button
@@ -503,7 +760,7 @@ export default function Index() {
               activeTab === 'search' ? 'text-primary' : 'text-muted-foreground'
             }`}
           >
-            <Icon name="Search" size={20} />
+            <Icon name="Search" size={18} />
             <span className="text-xs">Поиск</span>
           </button>
           <button
@@ -512,8 +769,17 @@ export default function Index() {
               activeTab === 'routes' ? 'text-primary' : 'text-muted-foreground'
             }`}
           >
-            <Icon name="Map" size={20} />
+            <Icon name="Map" size={18} />
             <span className="text-xs">Маршруты</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('schedule')}
+            className={`flex flex-col items-center justify-center gap-1 transition-colors ${
+              activeTab === 'schedule' ? 'text-primary' : 'text-muted-foreground'
+            }`}
+          >
+            <Icon name="Clock" size={18} />
+            <span className="text-xs">Время</span>
           </button>
           <button
             onClick={() => setActiveTab('profile')}
@@ -521,7 +787,7 @@ export default function Index() {
               activeTab === 'profile' ? 'text-primary' : 'text-muted-foreground'
             }`}
           >
-            <Icon name="User" size={20} />
+            <Icon name="User" size={18} />
             <span className="text-xs">Профиль</span>
           </button>
         </div>
