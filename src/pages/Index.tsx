@@ -11,6 +11,7 @@ export default function Index() {
   const [trainType, setTrainType] = useState('all');
   const [carClass, setCarClass] = useState('all');
   const [showFilters, setShowFilters] = useState(false);
+  const [showFullscreenQR, setShowFullscreenQR] = useState(false);
 
   const popularRoutes = [
     { from: 'Москва', to: 'Санкт-Петербург', price: '2 890', time: '3ч 40м', trains: 12 },
@@ -113,7 +114,10 @@ export default function Index() {
 
                 <div className="bg-white p-4 md:p-6 space-y-4 md:space-y-6">
                   <div className="flex justify-center">
-                    <div className="bg-white p-4 rounded-lg border-2 border-primary/20">
+                    <div 
+                      className="bg-white p-4 rounded-lg border-2 border-primary/20 cursor-pointer hover:border-primary/40 transition-colors active:scale-95"
+                      onClick={() => setShowFullscreenQR(true)}
+                    >
                       <svg
                         width="180"
                         height="180"
@@ -522,6 +526,84 @@ export default function Index() {
           </button>
         </div>
       </nav>
+
+      {showFullscreenQR && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setShowFullscreenQR(false)}
+        >
+          <div className="relative">
+            <button
+              onClick={() => setShowFullscreenQR(false)}
+              className="absolute -top-12 right-0 text-white hover:text-white/80 transition-colors"
+            >
+              <Icon name="X" size={32} />
+            </button>
+            <div className="bg-white p-6 rounded-2xl max-w-md w-full animate-scale-in">
+              <div className="text-center mb-4">
+                <h3 className="text-xl font-bold text-foreground mb-1">QR-код билета</h3>
+                <p className="text-sm text-muted-foreground">Поезд №702А, вагон 05, место 12</p>
+              </div>
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 200 200"
+                className="max-w-sm mx-auto"
+              >
+                <rect width="200" height="200" fill="white" />
+                <g fill="black">
+                  <rect x="20" y="20" width="20" height="20" />
+                  <rect x="60" y="20" width="20" height="20" />
+                  <rect x="100" y="20" width="20" height="20" />
+                  <rect x="140" y="20" width="20" height="20" />
+                  <rect x="160" y="20" width="20" height="20" />
+                  
+                  <rect x="20" y="40" width="20" height="20" />
+                  <rect x="160" y="40" width="20" height="20" />
+                  
+                  <rect x="20" y="60" width="20" height="20" />
+                  <rect x="60" y="60" width="20" height="20" />
+                  <rect x="80" y="60" width="20" height="20" />
+                  <rect x="100" y="60" width="20" height="20" />
+                  <rect x="160" y="60" width="20" height="20" />
+                  
+                  <rect x="20" y="80" width="20" height="20" />
+                  <rect x="60" y="80" width="20" height="20" />
+                  <rect x="100" y="80" width="20" height="20" />
+                  <rect x="140" y="80" width="20" height="20" />
+                  <rect x="160" y="80" width="20" height="20" />
+                  
+                  <rect x="20" y="100" width="20" height="20" />
+                  <rect x="40" y="100" width="20" height="20" />
+                  <rect x="80" y="100" width="20" height="20" />
+                  <rect x="120" y="100" width="20" height="20" />
+                  <rect x="160" y="100" width="20" height="20" />
+                  
+                  <rect x="60" y="120" width="20" height="20" />
+                  <rect x="100" y="120" width="20" height="20" />
+                  <rect x="140" y="120" width="20" height="20" />
+                  
+                  <rect x="20" y="140" width="20" height="20" />
+                  <rect x="60" y="140" width="20" height="20" />
+                  <rect x="80" y="140" width="20" height="20" />
+                  <rect x="100" y="140" width="20" height="20" />
+                  <rect x="120" y="140" width="20" height="20" />
+                  <rect x="160" y="140" width="20" height="20" />
+                  
+                  <rect x="20" y="160" width="20" height="20" />
+                  <rect x="40" y="160" width="20" height="20" />
+                  <rect x="80" y="160" width="20" height="20" />
+                  <rect x="140" y="160" width="20" height="20" />
+                  <rect x="160" y="160" width="20" height="20" />
+                </g>
+              </svg>
+              <p className="text-center text-sm text-muted-foreground mt-4">
+                Нажмите в любом месте, чтобы закрыть
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
