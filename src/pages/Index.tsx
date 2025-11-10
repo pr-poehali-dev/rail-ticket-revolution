@@ -8,6 +8,9 @@ import Icon from '@/components/ui/icon';
 
 export default function Index() {
   const [activeTab, setActiveTab] = useState('ticket');
+  const [trainType, setTrainType] = useState('all');
+  const [carClass, setCarClass] = useState('all');
+  const [showFilters, setShowFilters] = useState(false);
 
   const popularRoutes = [
     { from: 'Москва', to: 'Санкт-Петербург', price: '2 890', time: '3ч 40м', trains: 12 },
@@ -71,21 +74,21 @@ export default function Index() {
         </div>
       </header>
 
-      <main className="container px-4 py-8">
+      <main className="container px-4 py-6 md:py-8 pb-24 md:pb-8">
         {activeTab === 'ticket' && (
           <div className="mx-auto max-w-2xl space-y-6 animate-fade-in">
             <div className="text-center space-y-2">
-              <h1 className="text-3xl font-bold tracking-tight">Ваш билет</h1>
-              <p className="text-muted-foreground">QR-код для посадки в поезд</p>
+              <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Ваш билет</h1>
+              <p className="text-sm md:text-base text-muted-foreground">QR-код для посадки в поезд</p>
             </div>
 
             <Card className="overflow-hidden border-2">
               <CardContent className="p-0">
-                <div className="bg-gradient-to-br from-primary to-primary/80 p-6 text-white">
-                  <div className="flex items-start justify-between mb-6">
+                <div className="bg-gradient-to-br from-primary to-primary/80 p-4 md:p-6 text-white">
+                  <div className="flex items-start justify-between mb-4 md:mb-6">
                     <div>
-                      <p className="text-sm opacity-90 mb-1">Поезд №702А</p>
-                      <h2 className="text-2xl font-bold">Москва → Санкт-Петербург</h2>
+                      <p className="text-xs md:text-sm opacity-90 mb-1">Поезд №702А</p>
+                      <h2 className="text-lg md:text-2xl font-bold">Москва → Санкт-Петербург</h2>
                     </div>
                     <Badge variant="secondary" className="bg-white/20 text-white border-0">
                       Сапсан
@@ -108,14 +111,14 @@ export default function Index() {
                   </div>
                 </div>
 
-                <div className="bg-white p-6 space-y-6">
+                <div className="bg-white p-4 md:p-6 space-y-4 md:space-y-6">
                   <div className="flex justify-center">
                     <div className="bg-white p-4 rounded-lg border-2 border-primary/20">
                       <svg
-                        width="200"
-                        height="200"
+                        width="180"
+                        height="180"
                         viewBox="0 0 200 200"
-                        className="animate-scale-in"
+                        className="animate-scale-in md:w-[200px] md:h-[200px]"
                       >
                         <rect width="200" height="200" fill="white" />
                         <g fill="black">
@@ -251,6 +254,94 @@ export default function Index() {
                       </div>
                     </div>
                   </div>
+
+                  <Button 
+                    variant="outline" 
+                    className="w-full mb-4"
+                    onClick={() => setShowFilters(!showFilters)}
+                  >
+                    <Icon name="SlidersHorizontal" size={20} className="mr-2" />
+                    {showFilters ? 'Скрыть фильтры' : 'Показать фильтры'}
+                  </Button>
+
+                  {showFilters && (
+                    <div className="space-y-4 p-4 bg-secondary/30 rounded-lg mb-4 animate-fade-in">
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Тип поезда</label>
+                        <div className="grid grid-cols-2 gap-2">
+                          <Button
+                            variant={trainType === 'all' ? 'default' : 'outline'}
+                            size="sm"
+                            onClick={() => setTrainType('all')}
+                          >
+                            Все
+                          </Button>
+                          <Button
+                            variant={trainType === 'sapsan' ? 'default' : 'outline'}
+                            size="sm"
+                            onClick={() => setTrainType('sapsan')}
+                          >
+                            Сапсан
+                          </Button>
+                          <Button
+                            variant={trainType === 'express' ? 'default' : 'outline'}
+                            size="sm"
+                            onClick={() => setTrainType('express')}
+                          >
+                            Экспресс
+                          </Button>
+                          <Button
+                            variant={trainType === 'regular' ? 'default' : 'outline'}
+                            size="sm"
+                            onClick={() => setTrainType('regular')}
+                          >
+                            Обычный
+                          </Button>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Класс вагона</label>
+                        <div className="grid grid-cols-2 gap-2">
+                          <Button
+                            variant={carClass === 'all' ? 'default' : 'outline'}
+                            size="sm"
+                            onClick={() => setCarClass('all')}
+                          >
+                            Все
+                          </Button>
+                          <Button
+                            variant={carClass === 'luxury' ? 'default' : 'outline'}
+                            size="sm"
+                            onClick={() => setCarClass('luxury')}
+                          >
+                            Люкс
+                          </Button>
+                          <Button
+                            variant={carClass === 'coupe' ? 'default' : 'outline'}
+                            size="sm"
+                            onClick={() => setCarClass('coupe')}
+                          >
+                            Купе
+                          </Button>
+                          <Button
+                            variant={carClass === 'platzkart' ? 'default' : 'outline'}
+                            size="sm"
+                            onClick={() => setCarClass('platzkart')}
+                          >
+                            Плацкарт
+                          </Button>
+                          <Button
+                            variant={carClass === 'seated' ? 'default' : 'outline'}
+                            size="sm"
+                            onClick={() => setCarClass('seated')}
+                          >
+                            Сидячий
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
                   <Button size="lg" className="w-full">
                     <Icon name="Search" size={20} className="mr-2" />
